@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Twitch.tv Data Dashboard | Sébastien Vercammen</title>
+		<meta name="author" content="Sébastien Vercammen">
+		<meta name="description" content="A responsive real-time dashboard to display data/statistics from my node.js Twitch.tv Data Parser.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<meta property="og:description" content="A responsive real-time dashboard to display data/statistics from my node.js Twitch.tv Data Parser.">
+		<meta property="og:title" content="Twitch.tv Data Dashboard | Sébastien Vercammen">
+		<meta property="twitter:card" content="summary">
+		<meta property="twitter:site" content="@SebVercammen">
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<!--[if lte IE 8]>
+			<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+		<![endif]-->
+		<!--[if gt IE 8]><!-->
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+		<!--<![endif]-->
+		
+		<link href="css/normalize.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Twitch.tv Real-time Stats</h1>
+		
+		<div class="pure-g text-center">
+			<div class="pure-u-1 pure-u-sm-1-3">
+				<h2>Uptime</h2>
+				<p class="count" id="uptime">0</p>
+			</div>
+			
+			<div class="pure-u-1 pure-u-sm-1-3">
+				<h2>Messages per minute</h2>
+				<p class="count" id="msgs-per-minute">0</p>
+			</div>
+			
+			<div class="pure-u-1 pure-u-sm-1-3">
+				<h2>Emotes per minute</h2>
+				<p class="count" id="emotes-per-minute">0</p>
+			</div>
+		</div>
+		
+		<h2>Current channels</h2>
+		
+		<table id="channels" class="pure-table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Channel</th>
+					<th>Link</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+			</tbody>
+		</table>
+		
+		<div class="footer pure-g">
+			<div class="pure-u-1 pure-u-sm-1-2">
+				<i class="fa fa-github"></i> <a href="https://github.com/sebastienvercammen/Twitch.tv-Data-Dashboard/" rel="nofollow">This website is on GitHub!</a>
+			</div>
+			
+			<div class="pure-u-1 pure-u-sm-1-2 text-right">
+				by <a href="http://www.sebastienvercammen.be" rel="me">Sébastien Vercammen</a>
+			</div>
+		</div>
+		
+		<!-- Scripts -->
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>

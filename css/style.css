@@ -1,0 +1,45 @@
+body {
+	color: #333;
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 45px;
+}
+
+/* Native elements */
+a {
+	text-decoration: none;
+	color: #444;
+}
+	a:hover,
+	a:focus {
+		color: #000;
+		outline: none;
+		text-decoration: underline;
+	}
+
+	a:hover .muted,
+	a:focus .muted {
+		color: #000;
+	}
+
+/* Body elements */
+p.count {
+	font-size: 1.17em;
+}
+
+div.footer {
+	margin-top: 30px;
+	font-size: 0.9em;
+	border-top: 1px solid #444;
+	padding-top: 8px;
+}
+
+#channels tr td:last-child { text-align: center; }
+
+/* Helper classes */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.muted {
+	color: #777;
+}
