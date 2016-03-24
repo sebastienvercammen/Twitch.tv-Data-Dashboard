@@ -10,17 +10,17 @@ a {
 	text-decoration: none;
 	color: #444;
 }
-	a:hover,
-	a:focus {
-		color: #000;
-		outline: none;
-		text-decoration: underline;
-	}
+a:hover,
+a:focus {
+	color: #000;
+	outline: none;
+	text-decoration: underline;
+}
 
-	a:hover .muted,
-	a:focus .muted {
-		color: #000;
-	}
+a:hover .muted,
+a:focus .muted {
+	color: #000;
+}
 
 /* Body elements */
 p.count {
@@ -42,4 +42,46 @@ div.footer {
 
 .muted {
 	color: #777;
+}
+
+
+/* Responsive tables */
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td:before { 
+		display: block;
+		min-width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		font-weight: bold;
+	}
+	
+	#channels tr td:last-child { text-align: left; }
+	
+	/*
+		Label the data
+	*/
+	td:nth-of-type(1):before { content: "#"; }
+	td:nth-of-type(2):before { content: "Channel"; }
+	td:nth-of-type(3):before { content: "Msgs per min"; }
+	td:nth-of-type(4):before { content: "Link"; }
+}
+
+@media only screen and (min-width: 412px) {
+	td:before {
+		display: inline-block;
+	}
 }

@@ -74,7 +74,7 @@
 	socket.on('channels', function(data) {
 		data.sort();
 		
-		var table = document.getElementById('channels');
+		var table = document.getElementById('channels').getElementsByTagName('tbody')[0];
 		
 		for(var i = 0; i < data.length; i++) {
 			var row = table.insertRow(-1);
