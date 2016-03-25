@@ -45,6 +45,15 @@ div.footer {
 }
 
 
+/* Footer readability/usability fix, using Pure.css breakpoint */
+@media screen and (max-width: 35.5em) {
+	.footer > div {
+		text-align: center;
+		margin-top: 15px;
+	}
+}
+
+
 /* Responsive tables */
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
 	/* Force table to not be like tables anymore */
@@ -80,6 +89,7 @@ div.footer {
 	td:nth-of-type(4):before { content: "Link"; }
 }
 
+/* Responsive table fix for our widths */
 @media only screen and (min-width: 412px) {
 	td:before {
 		display: inline-block;
