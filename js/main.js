@@ -1,22 +1,6 @@
 (function() {
 	var socket = io('http://sebastienvercammen.be:17757');
 	
-	function countArrInDataObj(obj) {
-		var count = 0;
-		
-		for(var e in obj) {
-			if(obj.hasOwnProperty(e)) {
-				var arr = obj[e];
-				
-				for(var i = 0; i < arr.length; i++) {
-					count++;
-				}
-			}
-		}
-		
-		return count;
-	}
-	
 	function millisecondsToDays(t) {
 		var cd = 24 * 60 * 60 * 1000,
 			ch = 60 * 60 * 1000,
@@ -38,6 +22,10 @@
 		return d + ' days, ' + h + ' hours, ' + m + ' minutes';
 	}
 	
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
 	function updateAllChannelCounters(msgsPerMinute) {
 		var els = document.getElementsByClassName('channel-row');
 		
@@ -46,7 +34,7 @@
 			var elCount = els[i].getElementsByClassName('count')[0];
 			
 			if(msgsPerMinute.hasOwnProperty(channel)) {
-				elCount.textContent = msgsPerMinute[channel].length;
+				elCount.textContent = msgsPerMinute[channel];
 			} else {
 				elCount.textContent = 0;
 			}
@@ -55,17 +43,19 @@
 	
 	socket.on('stats', function(data) {
 		var uptime = millisecondsToDays(data.uptime);
-		var emotesPerMinute = data.stats.emoteCountPerMinute;
-		var chanMsgsPerMinute = data.stats.chanMsgsPerMinute;
 		
-		// Count total emotes used
-		var countEmotesPerMinute = countArrInDataObj(emotesPerMinute);
-		var countTotalMsgsPerMinute = countArrInDataObj(chanMsgsPerMinute);
+		var emotesPerMinute = data.emoteCountPerMinute;
+		var chanMsgsPerMinute = data.chanMsgsPerMinute;
+		var msgsPerMinute = data.messagesPerMinute;
+		var totalMessages = numberWithCommas(data.totalMessages);
+		var dataSizeInGiB = (parseFloat(data.dataSizeInKiB) / 1024 / 1024).toFixed(2);
 		
 		// Set counters
 		document.getElementById('uptime').textContent = uptime;
-		document.getElementById('emotes-per-minute').textContent = countEmotesPerMinute;
-		document.getElementById('msgs-per-minute').textContent = countTotalMsgsPerMinute;
+		document.getElementById('total-msgs').textContent = totalMessages;
+		document.getElementById('datasize').textContent = dataSizeInGiB + ' GiB';
+		document.getElementById('emotes-per-minute').textContent = emotesPerMinute;
+		document.getElementById('msgs-per-minute').textContent = msgsPerMinute;
 		
 		// Update all channels
 		updateAllChannelCounters(chanMsgsPerMinute);
